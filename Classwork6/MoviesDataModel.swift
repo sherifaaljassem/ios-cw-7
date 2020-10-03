@@ -6,21 +6,52 @@
 //  Copyright © 2020 Hasan Alsaffar. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 
 
-struct Movie{
+class MovieDetailsVC: UIViewController {
+    @IBOutlet weak var movieImage: UIImageView!
+    
+    @IBOutlet weak var pgLabel: UIButton!
+    @IBOutlet weak var ratingLabel: UIButton!
+    @IBOutlet weak var yearLabel: UIButton!
+    
+    @IBOutlet weak var actor1ImageView: UIImageView!
+    @IBOutlet weak var actor2ImageView: UIImageView!
+    @IBOutlet weak var actor3ImageView: UIImageView!
+    
+    @IBOutlet weak var actor1NameLabel: UIImageView!
+    @IBOutlet weak var actor2NameLabel: UIImageView!
+    @IBOutlet weak var actor3NameLabel: UIImageView!
+}
+
+func viewDidLoad() {
+super.viewDidLoad()
+print("This is movie details")
+prepareMovieData()
+    func prepareMovieData[0]{
+    let movie = MarvelMovieData[0]
+    movieImage.image = UIImage(named: movie.movieName)
+    pgLabel.text = movie.pgRating
+    ratingLabel.text = "\(movie.rating)"
+    yearLabel.text = "\(movie.movieReleaseDate)"
+    actor1ImageView.image = UIImage(named: movie.actors[0])
+    actor2ImageView.image = UIImage(named: movie.actors[1])
+    actor3ImageView.image = UIImage(named: movie.actors[2])
+    
+    actor1NameLabel.text = movie.actors[0]
+    actor2NameLabel.text = movie.actors[1]
+    actor3NameLabel.text = movie.actors[2]
+}
+}
+    struct Movie{
     var movieName: String = ""
     var movieReleaseDate: Int
     var actors: [String]
     var rating: Double
     var pgRating: String
 }
-
-
-
-
 var MarvelMovieData = [
     Movie(movieName: "Avengers Endgame", movieReleaseDate: 2019, actors: ["Robert Downey", "Chris Evans", "Chris Hemsworth"], rating: 8.4, pgRating: "PG-13"),
     Movie(movieName: "Thor- Ragnarok", movieReleaseDate: 2017, actors: ["Chris Hemsworth", "Tom Hiddleston", "Mark Ruffalo"], rating: 7.9, pgRating: "PG-13"),
